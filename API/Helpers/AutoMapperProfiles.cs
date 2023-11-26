@@ -9,7 +9,7 @@ namespace API.Helpers
 	{
         public AutoMapperProfiles()
         {
-            CreateMap<Product, ProductsToReturnDto>()
+            CreateMap<Product, ProductToReturnDto>()
                 .ForMember(dest => dest.ProductBrand, opt => opt.MapFrom(x => x.ProductBrand.Name))
                 .ForMember(dest => dest.ProductType, opt => opt.MapFrom(x => x.ProductType.Name))
                 .ForMember(dest => dest.PictureUrl, opt => opt.MapFrom<ProductUrlResolver>());

@@ -34,6 +34,12 @@ app.UseStaticFiles();
 
 app.UseAuthorization();
 
+app.UseCors(builder => builder
+.AllowAnyHeader()
+.AllowAnyMethod()
+.AllowCredentials()
+.WithOrigins("https://localhost:4200"));
+
 app.MapControllers();
 
 using var scope = app.Services.CreateScope();

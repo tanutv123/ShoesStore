@@ -2,7 +2,7 @@
 
 namespace API.Dtos
 {
-	public class ProductsToReturnDto
+	public class ProductToReturnDto
 	{
         public int Id { get; set; }
         public string Name { get; set; }
