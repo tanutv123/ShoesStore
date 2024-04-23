@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Product} from "./shared/models/product.model";
 import {Pagination} from "./shared/models/pagination.model";
+import {BasketService} from "./basket/basket.service";
 
 @Component({
   selector: 'app-root',
@@ -11,9 +12,11 @@ import {Pagination} from "./shared/models/pagination.model";
 export class AppComponent implements OnInit{
   title = 'Shoes Store';
 
-  constructor() {
+  constructor(private basketService: BasketService) {
   }
 
   ngOnInit() {
+    const basketId = localStorage.getItem('basket_id');
+    if (basketId) this.basketService.getBasket(basketId);
   }
 }
