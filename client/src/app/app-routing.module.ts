@@ -6,6 +6,7 @@ import {ProductDetailsComponent} from "./shop/product-details/product-details.co
 import {TestErrorComponent} from "./core/test-error/test-error.component";
 import {NotFoundComponent} from "./core/not-found/not-found.component";
 import {ServerErrorComponent} from "./core/server-error/server-error.component";
+import {authGuard} from "./core/guards/auth.guard";
 
 const routes: Routes = [
   {path: '', component: HomeComponent, data: {breadcrumb: 'Home'}},
@@ -19,8 +20,12 @@ const routes: Routes = [
     loadChildren: () => import('./basket/basket.module')
       .then(m => m.BasketModule)},
   {path: 'checkout',
+    canActivate: [authGuard],
     loadChildren: () => import('./checkout/checkout.module')
       .then(m => m.CheckoutModule)},
+  {path: 'account',
+    loadChildren: () => import('./account/account.module')
+      .then(m => m.AccountModule)},
   {path: '**', redirectTo: '', pathMatch: "full"}
 ];
 
